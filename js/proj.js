@@ -1,7 +1,6 @@
 class createProject {
     // Template for building project instance.
     constructor(projectObj) {
-        this.projectId = projectObj['projectId'],
         this.preview = projectObj['preview'];
         this.code = projectObj['code'];
         this.demo = projectObj['demo'];
@@ -11,15 +10,19 @@ class createProject {
         this.technologies = projectObj['technologies'];
     }
     // Create empty container.
-    createProjectContainer(parentId) {
+    createProjectContainer(parentId=null, parent) {
         /* 
         * @param parentId: string - (id selector) where the project container to be appended.
         * @return container: object - created <div> element.
         */
-        const projectContainerTag = 'div';
-        const container = document.createElement(projectContainerTag);
-        const parent = document.getElementById(parentId);
-        parent.appendChild(container);
+       const projectContainerTag = 'div';
+       const container = document.createElement(projectContainerTag);
+        if (parentId !== null) {
+            const parentElement = document.getElementById(parentId);
+            parentElement.appendChild(container);
+        } else {
+            parent.appendChild(container);
+        }
         return container;
     }
     // Add element attribute(s).
@@ -48,7 +51,7 @@ class createProject {
     createDemoCta(ctaObj, parent) {
         /* 
         * @param ctaObj: object - contains the name('code' or 'demo'), status, href.
-        * @param parent: object - (id selector) where the project container needs to be appended.
+        * @param parent: object - (id selector) where the project container needs to be appended & source code Availability
         * @return cta: object - the created <a> element.
         */
         const ctaTag = 'a';
@@ -123,6 +126,8 @@ class createProject {
             const tagSpanElement = document.createElement('span');
             tagSpanElement.appendChild(tagTextNode);
             tagContainer.appendChild(tagSpanElement);
+            tagSpanElement.setAttribute('class', 'technologies-tag');
+            tagContainer.setAttribute('class', 'technologies-tag-box');
             parent.appendChild(tagContainer);
             const tagElementsDetail = {
                 div: tagContainer,
@@ -132,39 +137,71 @@ class createProject {
         }
     }
 }
-// Start rendering
-const greadProject = {
-    projectId: 0,
-    preview: {},
-    code: {
-        name: 'code',
-        status: 'available',
-        href: './'
-    },
-    demo: {
-        name: 'demo',
-        status: 'available',
-        href: './'
-    },
-    brand: 'gread',
-    catchPhrase: 'your library of entertainment',
-    description: 'A web application that allows user to keep a record of their favorite...',
-    technologies: ['html', 'css', 'javascript', 'php', 'mysql']
-}
-const parentId = 'container';
-// createProject template
-let newProject = new createProject(greadProject);
-const projectContainer = newProject.createProjectContainer(parentId); // empty div
-// Adding attributes
-const projectContainerAttr = {
-    class: 'projectContainer',
-}
-newProject.addAttribute(projectContainerAttr, projectContainer);
-const previewImg = newProject.createPreview(projectContainer); // preview or screenshot
-const codeCta = newProject.createDemoCta(newProject['code'], projectContainer); // code cta
-const demoCta = newProject.createDemoCta(newProject['demo'], projectContainer); // demo cta
-const projectTitle = newProject.createProjectTitle({brand: newProject['brand'], catchPhrase: newProject['catchPhrase']}, projectContainer); // project title
-const description = newProject.createDescription(newProject['description'], projectContainer); // description
-const divider = newProject.createDetailsDivider(projectContainer); // horizontal divider
-const technologiesHeading = newProject.createTechnologiesHeading(projectContainer); // technologies heading
-const technologiesTag = newProject.createTechnologiesTag(newProject['technologies'], projectContainer); // technologies tags  
+(function startProjectRendering() {
+    // Fetch
+    fetch('./js/data.json')
+    .then((response) => response.json())
+    .then((data) => {
+        const projectsArray = data['projects'];
+        const parentId = 'container';
+
+        // Start rendering
+        // Iterate through all projects
+        for (const project of projectsArray) {
+            // Project component instance
+            let newProject = new createProject(project);
+            const projectBrand = newProject['brand'];            
+            // Project Container
+            const projectContainer = newProject.createProjectContainer(parentId);
+            newProject.addAttribute({
+                id: newProject['brand'],
+                class: 'project-container'
+            }, projectContainer);
+            // Preview Box
+            const previewContainer = newProject.createProjectContainer(null, projectContainer);
+            newProject.addAttribute({class: 'preview-box'}, previewContainer);
+            const previewImg = newProject.createPreview(previewContainer); // Screenshot
+            newProject.addAttribute({
+                class: 'preview-img',
+                src: newProject['preview']['src'],
+                alt: newProject['preview']['alt']
+            }, previewImg);
+            // Preview Cta Box
+            const previewCtaContainer = newProject.createProjectContainer(null, previewContainer);
+            newProject.addAttribute({class: 'preview-cta-box'}, previewCtaContainer);
+            const ctaArray = [newProject['code'], newProject['demo']]; // code & demo cta
+            for (const cta of ctaArray) {
+                const currentCta = newProject.createDemoCta(cta, previewContainer); // Current cta
+                const ctaName = cta['name'];
+                const ctaClass = 'cta-' + ctaName;
+                const ctaURL = cta['href'];
+                newProject.addAttribute({class: ctaClass}, currentCta);
+                if (ctaName == 'code') newProject.addAttribute({href: ctaURL}, currentCta);
+                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + '?project_demo=' + projectBrand}, currentCta);
+                previewCtaContainer.appendChild(currentCta);
+            }
+            // Project Details Box
+            const detailsContainer = newProject.createProjectContainer(null, projectContainer);
+            newProject.addAttribute({class: 'details-box'}, detailsContainer);
+            // Project Texts (Title, catchphrase, and description)
+            const detailsText = newProject.createProjectContainer(null, detailsContainer);
+            newProject.addAttribute({class: 'details-text'}, detailsText);
+            const projectTitle = newProject.createProjectTitle({
+                brand: projectBrand,
+                catchPhrase: newProject['catchPhrase']
+            }, detailsText);
+            newProject.addAttribute({class: 'details-title'}, projectTitle);
+            const detailsDescription = newProject.createDescription(newProject['description'], detailsText);
+            newProject.addAttribute({class: 'details-description'}, detailsDescription);
+            // Details divider
+            const detailsDivider = newProject.createDetailsDivider(detailsContainer);
+            newProject.addAttribute({class: 'details-divider'}, detailsDivider); 
+            // Technologies Box
+            const technologiesContainer = newProject.createProjectContainer(null, detailsContainer);
+            newProject.addAttribute({class: 'details-technologies-box'}, technologiesContainer);
+            const technologiesHeading = newProject.createTechnologiesHeading(technologiesContainer);
+            newProject.addAttribute({class: 'details-technologies-heading'}, technologiesHeading);
+            const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesContainer);
+        }    
+    })
+})();
