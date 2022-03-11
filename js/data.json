@@ -1,0 +1,40 @@
+{
+    "projects": [
+        {
+            "preview": {
+                "src": "./assets/demo/projects/gread_demo_screenshot_sm.png",
+                "alt": "Gread demo"
+            },
+            "code": {
+                "name": "code",
+                "href": "#"
+            },
+            "demo": {
+                "name": "demo",
+                "href": "./?project="
+            },
+            "brand": "gread",
+            "catchPhrase": "your library of entertainment",
+            "description": "A web application that allows user to keep a record of their favorite...",
+            "technologies": ["html", "css", "javascript", "php", "mysql"]
+        },
+        {
+            "preview": {
+                "src": "./assets/demo/projects/",
+                "alt": ""
+            },
+            "code": {
+                "name": "code",
+                "href": ""
+            },
+            "demo": {
+                "name": "demo",
+                "href": "./?project="
+            },
+            "brand": "",
+            "catchPhrase": "",
+            "description": "",
+            "technologies": ["", "", "", "", ""]
+        }
+    ]
+}
