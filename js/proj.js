@@ -137,9 +137,9 @@ class createProject {
         }
     }
 }
-(function startProjectRendering() {
+function startProjectRendering(jsonFile) {
     // Fetch
-    fetch('./js/data.json')
+    fetch(jsonFile)
     .then((response) => response.json())
     .then((data) => {
         const projectsArray = data['projects'];
@@ -177,7 +177,7 @@ class createProject {
                 const ctaURL = cta['href'];
                 newProject.addAttribute({class: ctaClass}, currentCta);
                 if (ctaName == 'code') newProject.addAttribute({href: ctaURL}, currentCta);
-                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + '?project_demo=' + projectBrand}, currentCta);
+                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + projectBrand}, currentCta);
                 previewCtaContainer.appendChild(currentCta);
             }
             // Project Details Box
@@ -204,4 +204,12 @@ class createProject {
             const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesContainer);
         }    
     })
-})();
+};
+// Set current and home URL
+const currentURL = document.URL;
+const homeURL = 'http://127.0.0.1:5500/';
+// Featured projects
+if (currentURL == homeURL) {
+    const homeJson = './js/data.json';
+    startProjectRendering(homeJson);
+}

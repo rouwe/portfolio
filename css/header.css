@@ -1,0 +1,108 @@
+/* Header */
+.header-container {
+    position: relative;
+    min-height: 95%;
+    height: 100%;
+    max-height: 4.375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #00000033;
+    box-shadow: 0px 2px 4px #00000026;
+    overflow: hidden;
+}
+/* Uncollapsed Mobile Menu */
+.menu-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.25rem 1.5625rem;
+}
+.header-close-menu {
+    display: none;
+}
+.logo {
+    position: relative;
+    height: 1.875rem;
+    top: -1px;
+    left: -1px;
+    margin: 0 2rem;
+}
+/* Collapsed Navigation Menu */
+.nav-menu-box {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+}
+.nav-name-craft-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+.nav-name {
+    position: relative;
+    top: -2px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.81215rem;
+    text-transform: lowercase;
+    font-weight: 500;
+    letter-spacing: -1px;
+    color: var(--primary-color);
+}
+.nav-craft {
+    position: relative;
+    top: 1px;
+    font-family: 'Philosopher', sans-serif;
+    font-size: 0.8125rem;
+    font-style: italic;
+    letter-spacing: -0.4px;
+    color: hsl(0, 100%, 0%);
+    opacity: 0.85;
+}
+.nav-quote {
+    display: none;
+}
+/* Navigation */
+.navigation-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.375rem 1.5625rem;
+    background-color: var(--secondary-color);
+}
+.nav-item-box {
+    display: flex;
+    padding: 0.4375rem;
+}
+.nav-item-active {
+    background-color: #393637;
+}
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+.nav-icon {
+    width: 1.5rem;
+    max-width: 1.5rem;
+    height: 1.5rem;
+}
+.nav-icon path {
+    opacity: 0.8;
+}
+.nav-destination {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-top: 0.2rem;
+    color: var(--nav-icon);
+    opacity: 0.8;
+}
