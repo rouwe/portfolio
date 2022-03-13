@@ -70,7 +70,7 @@ class createProject {
         */
         const brandName = brandObj['brand'], catchPhrase = brandObj['catchPhrase'];
         const formatBrandName = `${brandName[0].toUpperCase()}${brandName.slice(1,)}`;
-        const formatCatchPhrase = catchPhrase.split(' ').map((word) => `${word[0].toUpperCase()}${word.slice(1,)}`).join(' ');
+        const formatCatchPhrase = catchPhrase.split(' ')[0][0].toUpperCase() + catchPhrase.slice(1,);
         const projectTitleTextNode = document.createTextNode(`${formatBrandName} - ${formatCatchPhrase}`);
         const projectTitleElement = document.createElement("h2");
         projectTitleElement.appendChild(projectTitleTextNode);
@@ -137,9 +137,9 @@ class createProject {
         }
     }
 }
-(function startProjectRendering() {
+function startProjectRendering(jsonFile) {
     // Fetch
-    fetch('./js/data.json')
+    fetch(jsonFile)
     .then((response) => response.json())
     .then((data) => {
         const projectsArray = data['projects'];
@@ -177,7 +177,7 @@ class createProject {
                 const ctaURL = cta['href'];
                 newProject.addAttribute({class: ctaClass}, currentCta);
                 if (ctaName == 'code') newProject.addAttribute({href: ctaURL}, currentCta);
-                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + '?project_demo=' + projectBrand}, currentCta);
+                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + projectBrand}, currentCta);
                 previewCtaContainer.appendChild(currentCta);
             }
             // Project Details Box
@@ -201,7 +201,19 @@ class createProject {
             newProject.addAttribute({class: 'details-technologies-box'}, technologiesContainer);
             const technologiesHeading = newProject.createTechnologiesHeading(technologiesContainer);
             newProject.addAttribute({class: 'details-technologies-heading'}, technologiesHeading);
-            const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesContainer);
+            const technologiesTagsContainer = newProject.createProjectContainer(null, technologiesContainer);
+            console.log(technologiesTagsContainer)
+            newProject.addAttribute({class: 'technologies-tags-container'}, technologiesTagsContainer);
+            const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesTagsContainer);
+            
         }    
     })
-})();
+};
+// Set current and home URL
+const currentURL = document.URL;
+const homeURL = 'http://127.0.0.1:5500/';
+// Featured projects
+if (currentURL == homeURL) {
+    const homeJson = './js/data.json';
+    startProjectRendering(homeJson);
+}

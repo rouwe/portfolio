@@ -1,0 +1,22 @@
+:root {
+    font-size: 16px;
+    --primary-color: #D20026;
+    --secondary-color: #4B4B4B;
+    --nav-icon: #FFFFFF;
+    --project-bg: #F2F2F2;
+    --details-bg: #E8E8E8;
+}
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+}
+@media all and (min-width: 18rem) {
+    body {
+        position: static;
+    }
+}

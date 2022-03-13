@@ -20,20 +20,20 @@
         },
         {
             "preview": {
-                "src": "./assets/demo/projects/",
-                "alt": ""
+                "src": "./assets/demo/demo_screenshot_empty_sm.png",
+                "alt": "Not available yet"
             },
             "code": {
                 "name": "code",
-                "href": ""
+                "href": "#"
             },
             "demo": {
                 "name": "demo",
-                "href": "./?project="
+                "href": "#"
             },
-            "brand": "",
-            "catchPhrase": "",
-            "description": "",
+            "brand": "Coming soon",
+            "catchPhrase": "Coming soon",
+            "description": "Coming soon",
             "technologies": ["", "", "", "", ""]
         }
     ]
