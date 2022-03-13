@@ -28,5 +28,7 @@ body {
     }
     .footer {
         position: relative;
+        border-right: 2px solid hsla(0, 100%, 0%, 15%);
+        box-shadow: 2px 0px 4px hsla(0, 100%, 0%, 10%);
     }
 }

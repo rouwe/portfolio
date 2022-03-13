@@ -20,6 +20,15 @@
     align-items: flex-start;
     padding: 1.25rem 1.5625rem;
 }
+.menu-box svg {
+    cursor: pointer;
+}
+.header-close-menu, .header-open-menu {
+    display: flex;
+    padding: 0px;
+    border: none;
+    background-color: #FFFFFF;
+}
 .header-close-menu {
     display: none;
 }
@@ -113,7 +122,8 @@
 @media all and (min-width: 768px) {
     /* Header */
     .header-container {
-        box-shadow: 2px 0px 4px hsla(0, 100%, 0%, 15%);
+        border-right: 2px solid hsla(0, 100%, 0%, 15%);
+        box-shadow: 2px 0px 4px hsla(0, 100%, 0%, 10%);
     }
     .inner-header-container {
         position: fixed;
@@ -132,7 +142,7 @@
         transform: scale(0.9);
     }
     .header-close-menu {
-        display: block;
+        display: flex;
     }
     .logo {
         align-self: center;
@@ -190,11 +200,17 @@
         padding: 0px;
         background-color: transparent;
     }
-    .nav-item-box {
+    .nav-item-box { 
         padding: 0.625rem 1.5625rem;
     }
     .nav-projects {
         display: flex;
+    }
+    .nav-home {
+        border-top: 1px solid #00000066;
+    }
+    .nav-home, .nav-projects, .nav-about {
+        border-bottom: 1px solid #00000066;
     }
     .nav-github, .nav-linkedin, .nav-resume {
         display: none;
