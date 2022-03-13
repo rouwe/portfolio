@@ -1,0 +1,32 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.copy-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.copy-text {
+    font-size: 0.6875rem;
+    text-align: center;
+    padding: 0px 1rem;
+}
+@media all and (min-width: 768px) {
+    body {
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        grid-template-rows: min-content min-content;
+        overflow: auto;
+    }
+    main#container {
+        margin-left: 2.1875rem;
+        overflow-x: hidden;
+    }
+    .footer {
+        position: relative;
+    }
+}
