@@ -5,6 +5,15 @@ body {
     display: flex;
     flex-direction: column;
 }
+.main-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: -0.6px;
+    margin: 0.8125rem 0px 0.9125rem;
+    color: var(--secondary-color);
+}
 .copy-box {
     width: 100%;
     display: flex;

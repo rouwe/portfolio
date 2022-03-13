@@ -3,6 +3,8 @@
     --primary-color: #D20026;
     --secondary-color: #4B4B4B;
     --nav-icon: #FFFFFF;
+    --project-bg: #F2F2F2;
+    --details-bg: #E8E8E8;
 }
 * {
     box-sizing: border-box;

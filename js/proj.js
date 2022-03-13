@@ -70,7 +70,7 @@ class createProject {
         */
         const brandName = brandObj['brand'], catchPhrase = brandObj['catchPhrase'];
         const formatBrandName = `${brandName[0].toUpperCase()}${brandName.slice(1,)}`;
-        const formatCatchPhrase = catchPhrase.split(' ').map((word) => `${word[0].toUpperCase()}${word.slice(1,)}`).join(' ');
+        const formatCatchPhrase = catchPhrase.split(' ')[0][0].toUpperCase() + catchPhrase.slice(1,);
         const projectTitleTextNode = document.createTextNode(`${formatBrandName} - ${formatCatchPhrase}`);
         const projectTitleElement = document.createElement("h2");
         projectTitleElement.appendChild(projectTitleTextNode);
@@ -201,7 +201,11 @@ function startProjectRendering(jsonFile) {
             newProject.addAttribute({class: 'details-technologies-box'}, technologiesContainer);
             const technologiesHeading = newProject.createTechnologiesHeading(technologiesContainer);
             newProject.addAttribute({class: 'details-technologies-heading'}, technologiesHeading);
-            const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesContainer);
+            const technologiesTagsContainer = newProject.createProjectContainer(null, technologiesContainer);
+            console.log(technologiesTagsContainer)
+            newProject.addAttribute({class: 'technologies-tags-container'}, technologiesTagsContainer);
+            const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesTagsContainer);
+            
         }    
     })
 };
