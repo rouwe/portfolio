@@ -3,9 +3,21 @@
         {
             "preview": {
                 "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
                     "large": {
                         "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_lg.png",
-                        "media": "(min-width: 1920px)"
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
                     },
                     "medium": {
                         "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_md.png",
@@ -33,9 +45,21 @@
         {
             "preview": {
                 "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/demo_screenshot_empty_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/demo_screenshot_empty_xl.png",
+                        "media":"(min-width: 2346px)"
+                    },
                     "large": {
                         "srcset": "./assets/demo/demo_screenshot_empty_lg.png",
                         "media": "(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/demo_screenshot_empty_mdlg.png",
+                        "media": "(min-width: 1600px)"
                     },
                     "medium": {
                         "srcset": "./assets/demo/demo_screenshot_empty_md.png",

@@ -77,16 +77,46 @@ body {
 }
 @media all and (min-width: 1600px) {
     :root {
-        font-size: 21px;
+        font-size: 22px;
     }
 }
 @media all and (min-width: 1760px) {
     :root {
-        font-size: 22px;
+        font-size: 24px;
     }
 }
 @media all and (min-width: 1920px) {
     :root {
-        font-size: 23.5px;
+        font-size: 26px;
+    }
+}
+@media all and (min-width: 2133px) {
+    :root {
+        font-size: 28.5px;
+    }
+}
+@media all and (min-width: 2346px) {
+    :root {
+        font-size: 32px;
+    }
+}
+@media all and (min-width: 2560px) {
+    :root {
+        font-size: 35px;
+    }
+}
+@media all and (min-width: 3028px) {
+    :root {
+        font-size: 40px;
+    }
+}
+@media all and (min-width: 3424px) {
+    :root {
+        font-size: 46px;
+    }
+}
+@media all and (min-width: 3820px) {
+    :root {
+        font-size: 52px;
     }
 }

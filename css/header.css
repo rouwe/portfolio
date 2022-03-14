@@ -145,7 +145,7 @@
     /* Header */
     .header-container {
         grid-area: header;
-        border-right: 1px solid #00000033;
+        border-right: 0.0625rem solid #00000033;
         box-shadow: 2px 0px 4px #00000026;
     }
     .inner-header-container {
@@ -155,7 +155,10 @@
         justify-content: flex-start;
         border: none;
     }
-    .inner-header-container
+    .inner-header-container {
+        border: none;
+        box-shadow: none;
+    }
     .menu-box {
         flex-direction: column;
     }
