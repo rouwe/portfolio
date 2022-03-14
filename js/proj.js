@@ -37,15 +37,33 @@ class createProject {
         }
     }
     // Create preview element.
-    createPreview(parent) {
+    createPreviewImg(pictureObj, parent) {
         /* 
         * @param parent: object - selected parent where the preview element needs to be appended.
         * @return previewImg: object - the created <img> element.
         */
-        const previewTag = 'img';
-        const previewImg = document.createElement(previewTag);
-        parent.appendChild(previewImg);
-        return previewImg;
+        const previewTag = 'picture';
+        const previewPicture = document.createElement(previewTag);
+
+        for (const source in pictureObj['sources']) {
+            if (source != 'small') {
+                const newSource = document.createElement('source');
+                newSource.setAttribute('class', 'preview-img');
+                newSource.setAttribute('media', pictureObj['sources'][source]['media']);
+                newSource.setAttribute('srcset', pictureObj['sources'][source]['srcset']);
+                previewPicture.appendChild(newSource);
+            }
+            else {
+                const img = document.createElement('img');
+                img.setAttribute('class', 'preview-img');
+                img.setAttribute('src', pictureObj['sources'][source]['src']);
+                img.setAttribute('alt', pictureObj['sources'][source]['alt']);
+                previewPicture.appendChild(img);
+            }
+        }
+
+        parent.appendChild(previewPicture);
+        return previewPicture;
     }
     // Create cta button for (code or demo).
     createDemoCta(ctaObj, parent) {
@@ -160,11 +178,9 @@ function startProjectRendering(jsonFile) {
             // Preview Box
             const previewContainer = newProject.createProjectContainer(null, projectContainer);
             newProject.addAttribute({class: 'preview-box'}, previewContainer);
-            const previewImg = newProject.createPreview(previewContainer); // Screenshot
+            const previewImg = newProject.createPreviewImg(newProject['preview'], previewContainer); // Screenshot
             newProject.addAttribute({
                 class: 'preview-img',
-                src: newProject['preview']['src'],
-                alt: newProject['preview']['alt']
             }, previewImg);
             // Preview Cta Box
             const previewCtaContainer = newProject.createProjectContainer(null, previewContainer);
@@ -202,7 +218,6 @@ function startProjectRendering(jsonFile) {
             const technologiesHeading = newProject.createTechnologiesHeading(technologiesContainer);
             newProject.addAttribute({class: 'details-technologies-heading'}, technologiesHeading);
             const technologiesTagsContainer = newProject.createProjectContainer(null, technologiesContainer);
-            console.log(technologiesTagsContainer)
             newProject.addAttribute({class: 'technologies-tags-container'}, technologiesTagsContainer);
             const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesTagsContainer);
             
@@ -211,9 +226,9 @@ function startProjectRendering(jsonFile) {
 };
 // Set current and home URL
 const currentURL = document.URL;
-const homeURL = 'http://127.0.0.1:5500/';
+const homeURL = ['http://127.0.0.1:5500/', 'http://127.0.0.1:5500/index.html'];
 // Featured projects
-if (currentURL == homeURL) {
+if (homeURL.includes(currentURL)) {
     const homeJson = './js/data.json';
     startProjectRendering(homeJson);
 }

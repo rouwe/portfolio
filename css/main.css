@@ -28,16 +28,63 @@ body {
     body {
         display: grid;
         grid-template-columns: min-content 1fr;
-        grid-template-rows: min-content min-content;
+        grid-template-rows: 100%;
+        grid-template-areas:
+        "header main"
+        "header footer";
         overflow: auto;
     }
     main#container {
-        margin-left: 2.1875rem;
+        grid-area: main;
+        margin: 0px 2.1875rem;
         overflow-x: hidden;
+    }
+    .main-heading {
+        margin: 1.5rem 0px 0.915rem;
     }
     .footer {
         position: relative;
-        border-right: 2px solid hsla(0, 100%, 0%, 15%);
-        box-shadow: 2px 0px 4px hsla(0, 100%, 0%, 10%);
+        grid-area: footer;
+    }
+}
+@media all and (min-width: 834px) {
+    .main-heading {
+        margin: 2.4rem 0px 0.93rem;        
+    }
+}
+@media all and (min-width: 1024px) {
+    main#container {
+        margin: 0px 2.64rem;
+    }
+    .main-heading {
+        text-align: left;
+        margin: 2.64rem 0px 0.95rem;
+    }
+}
+@media all and (min-width: 1280px) {
+    main#container {
+        margin: 0px 2.81rem;
+    }
+    .main-heading {
+        text-align: left;
+        margin: 3rem 0px 0.97rem;
+    }
+}
+@media all and (min-width: 1366px) {
+    main#container {
+        margin: 0px 3.2rem;
+    }
+    .main-heading {
+        text-align: left;
+        margin: 3.2rem 0px 0.99rem;
+    }
+}
+@media all and (min-width: 1440px) {
+    main#container {
+        margin: 0px 3.3rem;
+    }
+    .main-heading {
+        text-align: left;
+        margin: 3.3rem 0px 1.2rem;
     }
 }

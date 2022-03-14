@@ -101,20 +101,25 @@
     border: 2px solid #d10026cc;
     color: #FFFFFF;
     background-color: var(--secondary-color);
-    box-shadow: 3px 0px 3px hsla(0, 0%, 0%, 5%), 0px 3px 3px hsla(0, 0%, 0%, 20%);
+    box-shadow: 3px 0px 3px #0000000d, 0px 3px 3px #00000033;
 }
 @media all and (min-width: 768px) {
-    #container {
-        margin: 0px 2.1875rem;
-    }
     .project-container {
         flex-direction: row;
         margin: 0px 0px 3.125rem;
     }
     .preview-box {
+        position: relative;
         justify-content: center;
+        border-right: 0.0625rem solid #4a454626;
+        z-index: 2;
     }
+}
+@media all and (min-width: 1024px) {
     .preview-img {
-        width: 100%;
+        width: fit-content;
+    }
+    .cta-code, .cta-demo {
+        padding: 0.3125rem 0.9125rem 0.3125rem;
     }
 }
