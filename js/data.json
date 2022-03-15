@@ -35,7 +35,10 @@
             },
             "demo": {
                 "name": "demo",
-                "href": "https://drive.google.com/file/d/1z-3zZEL7KCV6lT_r5QpgIgVF9SnyBRtp/view?usp=sharing"
+                "href": {
+                    "mobile": "https://drive.google.com/file/d/1-2ejOq8-xHuKxbNX8CnEk4ux-0IE1w0P/view?usp=sharing",
+                    "desktop": "https://drive.google.com/file/d/1z-3zZEL7KCV6lT_r5QpgIgVF9SnyBRtp/view?usp=sharing"
+                }
             },
             "brand": "gread",
             "catchPhrase": "your library of entertainment",
@@ -77,7 +80,10 @@
             },
             "demo": {
                 "name": "demo",
-                "href": "#"
+                "href": {
+                    "mobile": "#",
+                    "desktop": "#"
+                }
             },
             "brand": "Coming soon",
             "catchPhrase": "Coming soon",

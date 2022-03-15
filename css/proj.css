@@ -39,7 +39,26 @@
     background-color: var(--secondary-color);
 }
 .cta-demo {
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    border: none;
     background-color: var(--primary-color);
+}
+.cta-demo-device-box {
+    position: absolute;
+    top: 100%;
+    left: -18%;
+    display: none;
+    column-gap: 0.5rem;
+    padding: 0.3rem 0.5rem;
+}
+.cta-demo-device {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    color: var(--secondary-color);
 }
 /* Details Box */
 .details-box {

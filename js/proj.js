@@ -66,16 +66,49 @@ class createProject {
         return previewPicture;
     }
     // Create cta button for (code or demo).
-    createDemoCta(ctaObj, parent) {
+    createDemoCta(ctaObj, parent, tag = null) {
         /* 
         * @param ctaObj: object - contains the name('code' or 'demo'), status, href.
         * @param parent: object - (id selector) where the project container needs to be appended & source code Availability
         * @return cta: object - the created <a> element.
         */
         const ctaTag = 'a';
-        const cta = document.createElement(ctaTag);
+        let cta = document.createElement(ctaTag);
+        if (tag !== null) {
+            cta = document.createElement(tag);
+        }
         const ctaName = ctaObj['name'];
         cta.textContent = ctaName;
+        if (ctaName == 'demo') {
+            const devicesBox = document.createElement('div');
+            devicesBox.setAttribute('class', 'cta-demo-device-box');
+            const mobileCta = document.createElement(ctaTag);
+            mobileCta.textContent = 'mobile';
+            const desktopCta = document.createElement(ctaTag);
+            desktopCta.textContent = 'desktop';
+            const devicesArr = {
+                mobile: mobileCta,
+                desktop: desktopCta
+            };
+            for (const device in devicesArr) {
+                devicesArr[device].setAttribute('class', 'cta-demo-device');
+                let deviceURL = ctaObj['href'][device];
+                if (deviceURL === '' || deviceURL === undefined) {
+                    deviceURL = '#';
+                }
+                switch(device) {
+                    case 'mobile':
+                        mobileCta.setAttribute('href', deviceURL);
+                        break;
+                    case 'desktop':
+                        desktopCta.setAttribute('href', deviceURL);
+                        break;
+                }
+            }
+            devicesBox.appendChild(desktopCta);
+            devicesBox.appendChild(mobileCta);
+            cta.appendChild(devicesBox);
+        }
         parent.appendChild(cta);
         return cta;
     }
@@ -187,13 +220,19 @@ function startProjectRendering(jsonFile) {
             newProject.addAttribute({class: 'preview-cta-box'}, previewCtaContainer);
             const ctaArray = [newProject['code'], newProject['demo']]; // code & demo cta
             for (const cta of ctaArray) {
-                const currentCta = newProject.createDemoCta(cta, previewContainer); // Current cta
                 const ctaName = cta['name'];
                 const ctaClass = 'cta-' + ctaName;
                 const ctaURL = cta['href'];
+                let currentCta = null;
+                if (ctaName == 'code') {
+                    currentCta = newProject.createDemoCta(cta, previewContainer);
+                    newProject.addAttribute({href: ctaURL}, currentCta);
+                }
+                else if (ctaName == 'demo') {
+                    const tag = 'div'
+                    currentCta = newProject.createDemoCta(cta, previewContainer, tag);
+                }
                 newProject.addAttribute({class: ctaClass}, currentCta);
-                if (ctaName == 'code') newProject.addAttribute({href: ctaURL}, currentCta);
-                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + projectBrand}, currentCta);
                 previewCtaContainer.appendChild(currentCta);
             }
             // Project Details Box
@@ -231,4 +270,35 @@ const homeURL = ['http://127.0.0.1:5500/', 'http://127.0.0.1:5500/index.html'];
 if (homeURL.includes(currentURL)) {
     const homeJson = './js/data.json';
     startProjectRendering(homeJson);
+}
+// Add event listener for cta demo buttons
+const checkForPreviewBox = setInterval(addCtaDemoEvent, 100); // Check rendered elements every 0.1s
+function addCtaDemoEvent() {
+    const previewBoxArray = document.getElementsByClassName('preview-box');
+    if (previewBoxArray.length > 0) {
+        const demoCtaArray = document.getElementsByClassName('cta-demo');
+        for (const demoCta of demoCtaArray) {
+            demoCta.addEventListener('click', toggleDemoOption);
+        }
+        clearInterval(checkForPreviewBox);
+    }
+}
+function toggleDemoOption() {
+    /* Toggle demo options (desktop or mobile)
+    */
+   console.log('Function start')
+    const deviceBox = this.getElementsByClassName('cta-demo-device-box')[0];
+    let displayState = deviceBox.style.display;
+    if (displayState === '') {
+        // Set display state to default
+        displayState = deviceBox.style.display = 'none';
+    }
+    // Modify style
+    if (displayState === 'none') {
+        displayState = 'flex';
+        deviceBox.style.display = displayState;
+    } else {
+        displayState = 'none';
+        deviceBox.style.display = displayState;
+    }
 }
