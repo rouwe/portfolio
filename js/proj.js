@@ -135,9 +135,27 @@ class createProject {
         * @param parent: object - selected parent where the description needs to be appended.
         * @return description: object - the created <p> element.
         */
+       const descriptionTextSplit = descriptionText.split(' ');
+       const descriptionWordLength = descriptionTextSplit.length;
+       const randomNumber = Math.ceil(Math.random() * 10);
+       const minLength = 20, maxLength = 30;
+       const ellipsis = '...';
+       if (descriptionWordLength > minLength) {
+           let randomLength = minLength + randomNumber;
+           if (randomLength > maxLength) {
+               randomLength = maxLength;
+           }
+           descriptionText = descriptionTextSplit.slice(0, randomLength).join(' ');
+       }
+       descriptionText = descriptionText + ellipsis + ' ';
        const description = document.createElement('p');
        const descriptionTextNode = document.createTextNode(descriptionText);
+       const seeAllElement = document.createElement('span');
+       const seeAllElementText = document.createTextNode('see all.');
+       seeAllElement.appendChild(seeAllElementText);
+       seeAllElement.setAttribute('class', 'expand-description');
        description.appendChild(descriptionTextNode);
+       description.appendChild(seeAllElement);
        parent.appendChild(description);
        return description;
     }
@@ -275,14 +293,18 @@ function startProjectRendering(jsonFile) {
     })
 };
 // Set current and home URL
-const currentURL = document.URL;
-const homeURL = ['http://127.0.0.1:5500/', 'http://127.0.0.1:5500/index.html'];
-const projectsURL = ['http://127.0.0.1:5500/projects.html'];
+const currentUrl = document.URL;
+const homeUrl = ['http://127.0.0.1:5500/',
+'http://127.0.0.1:5500/#', 
+'http://127.0.0.1:5500/index.html', 
+'http://127.0.0.1:5500/index.html#',
+'http://127.0.0.1:5500/index.html/#'];
+const projectsUrl = ['http://127.0.0.1:5500/projects.html'];
 // Featured projects
-if (homeURL.includes(currentURL)) {
+if (homeUrl.includes(currentUrl)) {
     const homeJson = './js/data.json';
     startProjectRendering(homeJson);
-} else if (projectsURL.includes(currentURL)) {
+} else if (projectsUrl.includes(currentUrl)) {
     const projectsJson = './js/projects.json';
     startProjectRendering(projectsJson);
 }
@@ -314,5 +336,50 @@ function toggleDemoOption() {
     } else {
         displayState = 'none';
         deviceBox.style.display = displayState;
+    }
+}
+// Wait for proj rendering to finish and add description event
+const descriptionArray = document.getElementsByClassName('details-description');
+const setDescriptionEvent = setInterval(setDescriptionEventInit, 100);
+function setDescriptionEventInit() {
+    const currentUrl = document.URL;
+    if (homeUrl.includes(currentUrl)) {
+        const jsonFile = './js/data.json';
+        addDescriptionSeeAllEvent(descriptionArray, jsonFile);
+    } else if (projectsUrl.includes(currentUrl)) {
+        // Project page if there's a record
+        // console.log('No data found.')
+        clearInterval(setDescriptionEvent);
+    }
+}
+function addDescriptionSeeAllEvent(descriptionArray, jsonFile) {
+    // Add see all event
+    if (descriptionArray.length > 0) {
+        // Check if description element is rendered
+        for (const description of descriptionArray) {
+            const seeAll = description.getElementsByClassName('expand-description')[0];
+            seeAll.addEventListener('click', function() {
+                // Fetch data
+                const seeAllParent = seeAll.parentElement;
+                let seeAllParentId = undefined;
+                for (let i = 0; i < descriptionArray.length; i++) {
+                    if (descriptionArray[i] === seeAllParent) {
+                        // Get description key
+                        seeAllParentId = i;
+                    }
+                }
+                fetch(jsonFile)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    // Display full description
+                    const targetDataObj = data['projects'][seeAllParentId];
+                    const allDescription = targetDataObj['description'];
+                    seeAllParent.textContent = allDescription;
+                })
+            });
+        }
+        clearInterval(setDescriptionEvent);
     }
 }
