@@ -298,8 +298,11 @@ const homeUrl = ['http://127.0.0.1:5500/',
 'http://127.0.0.1:5500/#', 
 'http://127.0.0.1:5500/index.html', 
 'http://127.0.0.1:5500/index.html#',
-'http://127.0.0.1:5500/index.html/#'];
-const projectsUrl = ['http://127.0.0.1:5500/projects.html'];
+'http://127.0.0.1:5500/index.html/#', 
+'https://rouwe.github.io/roweme/',
+'https://rouwe.github.io/roweme/index.html',
+'https://rouwe.github.io/roweme/#'];
+const projectsUrl = ['http://127.0.0.1:5500/projects.html', 'https://rouwe.github.io/roweme/projects.html'];
 // Featured projects
 if (homeUrl.includes(currentUrl)) {
     const homeJson = './js/data.json';
@@ -373,6 +376,7 @@ function addDescriptionSeeAllEvent(descriptionArray, jsonFile) {
                     return response.json();
                 })
                 .then((data) => {
+                    // Display full description
                     const targetDataObj = data['projects'][seeAllParentId];
                     const allDescription = targetDataObj['description'];
                     seeAllParent.textContent = allDescription;
