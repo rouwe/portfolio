@@ -373,7 +373,6 @@ function addDescriptionSeeAllEvent(descriptionArray, jsonFile) {
                     return response.json();
                 })
                 .then((data) => {
-                    // Display full description
                     const targetDataObj = data['projects'][seeAllParentId];
                     const allDescription = targetDataObj['description'];
                     seeAllParent.textContent = allDescription;
