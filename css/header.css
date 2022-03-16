@@ -178,12 +178,22 @@
     .menu-box .logo {
         transform: scale(1.1);
         margin-top: 0px;
+        transition: all 200ms ease-out 50ms;
+    }
+    .menu-box .logo:hover {
+        transform: scale(1.2);
     }
     .menu-box svg {
         transform: scale(0.9);
     }
     .header-close-menu {
         display: flex;
+    }
+    .header-close-menu, .header-open-menu {
+        transition: all 200ms ease-out 50ms;
+    }
+    .header-close-menu:hover, .header-open-menu:hover {
+        transform: scale(1.05);
     }
     .logo {
         align-self: center;
@@ -220,9 +230,13 @@
         width: 1.5rem;
         height: 1.5rem;
         opacity: 0.8;
+        transition: all 200ms ease-out 50ms;
     }
     .nav-data-icon path {
         fill: var(--secondary-color);
+    }
+    .nav-data-icon:hover {
+        transform: scale(1.05);
     }
     .nav-quote {
         width: 90%;
@@ -246,6 +260,7 @@
     }
     .nav-item-box { 
         padding: 0.625rem 1.5625rem;
+        border-radius: 0px;
     }
     .nav-projects {
         display: flex;
@@ -272,6 +287,10 @@
         font-size: 0.85rem;
         font-weight: 400;
         color: var(--secondary-color);
+        transition: all 200ms ease-out 50ms;
+    }
+    .nav-destination:hover {
+        letter-spacing: 0.1rem;
     }
     .desktop-nav-active {
         color: #FFFFFF;

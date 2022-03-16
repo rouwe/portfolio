@@ -190,12 +190,10 @@ class createProject {
 }
 function startProjectRendering(jsonFile) {
     // Fetch
-    console.log(jsonFile)
     fetch(jsonFile)
     .then((response) => response.json())
     .then((data) => {
         const projectsArray = data['projects'];
-        console.log(projectsArray.length)
         if (projectsArray.length < 1) {
             // Display project error notice
             const projectError = document.getElementsByClassName('project-error-notice')[0];
@@ -303,7 +301,6 @@ function addCtaDemoEvent() {
 function toggleDemoOption() {
     /* Toggle demo options (desktop or mobile)
     */
-   console.log('Function start')
     const deviceBox = this.getElementsByClassName('cta-demo-device-box')[0];
     let displayState = deviceBox.style.display;
     if (displayState === '') {
