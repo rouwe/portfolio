@@ -44,51 +44,6 @@
             "catchPhrase": "your library of entertainment",
             "description": "I built this web application because there are times when I have the urge to re-read or re-watch a specific anime, manga, or movie. I would have a hard time remembering the title and will either try hard thinking about the title or surf the web by using a character's name and looking for a relation to the one I'm looking for based on image recognition. This application will allow users to keep track of important information about their favorite entertainment like (title and description).",
             "technologies": ["html", "css", "javascript", "php", "mysql"]
-        },
-        {
-            "preview": {
-                "sources": {
-                    "extra_extra_large": {
-                        "srcset": "./assets/demo/demo_screenshot_empty_xxl.png",
-                        "media":"(min-width: 3820px)"
-                    },
-                    "extra_large": {
-                        "srcset": "./assets/demo/demo_screenshot_empty_xl.png",
-                        "media":"(min-width: 2346px)"
-                    },
-                    "large": {
-                        "srcset": "./assets/demo/demo_screenshot_empty_lg.png",
-                        "media": "(min-width: 1920px)"
-                    },
-                    "medium_large": {
-                        "srcset": "./assets/demo/demo_screenshot_empty_mdlg.png",
-                        "media": "(min-width: 1600px)"
-                    },
-                    "medium": {
-                        "srcset": "./assets/demo/demo_screenshot_empty_md.png",
-                        "media": "(min-width: 1366px)"
-                    },
-                    "small": {
-                        "src": "./assets/demo/demo_screenshot_empty_sm.png",
-                        "alt": "Gread application screenshot"
-                    }
-                }
-            },
-            "code": {
-                "name": "code",
-                "href": "./"
-            },
-            "demo": {
-                "name": "demo",
-                "href": {
-                    "mobile": "#",
-                    "desktop": "#"
-                }
-            },
-            "brand": "Coming soon",
-            "catchPhrase": "Coming soon",
-            "description": "Coming soon",
-            "technologies": ["html", "css", "js", "node js", "express"]
         }
     ]
 }

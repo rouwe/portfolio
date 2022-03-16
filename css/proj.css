@@ -34,12 +34,33 @@
     border-radius: 3px;
     color: #FFFFFF;
     box-shadow: 3.6px 0px 3.6px #00000033;
+    transition: all 250ms ease-out;
 }
 .cta-code {
     background-color: var(--secondary-color);
 }
 .cta-demo {
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
     background-color: var(--primary-color);
+}
+.cta-demo-device-box {
+    position: absolute;
+    top: 100%;
+    left: -18%;
+    display: none;
+    column-gap: 0.5rem;
+    padding: 0.3rem 0.5rem;
+}
+.cta-demo-device {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    color: var(--secondary-color);
 }
 /* Details Box */
 .details-box {
@@ -67,6 +88,11 @@
     margin: 0.75rem 0px 0px;
     color: var(--secondary-color);
 }
+.expand-description {
+    border-radius: 3px;
+    border-bottom: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
 .details-divider {
     border-top: 1px solid #00000033;
     margin: 0.5rem 0px 0.625rem;
@@ -93,6 +119,7 @@
     margin: 0.5rem 0.625rem 0.25rem 0px;
 }
 .technologies-tag {
+    user-select: none;
     font-size: 0.75rem;
     font-weight: 300;
     line-height: 100%;
@@ -101,20 +128,47 @@
     border: 2px solid #d10026cc;
     color: #FFFFFF;
     background-color: var(--secondary-color);
-    box-shadow: 3px 0px 3px hsla(0, 0%, 0%, 5%), 0px 3px 3px hsla(0, 0%, 0%, 20%);
+    box-shadow: 3px 0px 3px #0000000d, 0px 3px 3px #00000033;
 }
 @media all and (min-width: 768px) {
-    #container {
-        margin: 0px 2.1875rem;
-    }
     .project-container {
         flex-direction: row;
         margin: 0px 0px 3.125rem;
     }
     .preview-box {
+        position: relative;
         justify-content: center;
+        border-right: 0.0625rem solid #4a454626;
+        z-index: 2;
     }
+    .cta-demo:hover {
+        transform: scale(1.05);
+        color: var(--primary-color);
+        background-color: #FFFFFF;
+        box-shadow: unset;
+        box-shadow: 0px 2px 2px hsla(0, 0%, 29%, 50%);
+    }
+    .cta-demo:active {
+        font-weight: 500;
+        box-shadow: 0px 2px 2px hsla(0, 0%, 29%, 10%);
+    }
+    .cta-code:hover {
+        transform: scale(1.05);
+        color: var(--secondary-color);
+        background-color: #FFFFFF;
+        box-shadow: unset;
+        box-shadow: 0px 2px 2px hsla(0, 0%, 29%, 50%);
+    }
+    .cta-code:active {
+        font-weight: 500;
+        box-shadow: 0px 2px 2px hsla(0, 0%, 29%, 10%);
+    }
+}
+@media all and (min-width: 1024px) {
     .preview-img {
-        width: 100%;
+        width: fit-content;
+    }
+    .cta-code, .cta-demo {
+        padding: 0.3125rem 0.9125rem 0.3125rem;
     }
 }

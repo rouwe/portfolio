@@ -37,27 +37,78 @@ class createProject {
         }
     }
     // Create preview element.
-    createPreview(parent) {
+    createPreviewImg(pictureObj, parent) {
         /* 
         * @param parent: object - selected parent where the preview element needs to be appended.
         * @return previewImg: object - the created <img> element.
         */
-        const previewTag = 'img';
-        const previewImg = document.createElement(previewTag);
-        parent.appendChild(previewImg);
-        return previewImg;
+        const previewTag = 'picture';
+        const previewPicture = document.createElement(previewTag);
+
+        for (const source in pictureObj['sources']) {
+            if (source != 'small') {
+                const newSource = document.createElement('source');
+                newSource.setAttribute('class', 'preview-img');
+                newSource.setAttribute('media', pictureObj['sources'][source]['media']);
+                newSource.setAttribute('srcset', pictureObj['sources'][source]['srcset']);
+                previewPicture.appendChild(newSource);
+            }
+            else {
+                const img = document.createElement('img');
+                img.setAttribute('class', 'preview-img');
+                img.setAttribute('src', pictureObj['sources'][source]['src']);
+                img.setAttribute('alt', pictureObj['sources'][source]['alt']);
+                previewPicture.appendChild(img);
+            }
+        }
+
+        parent.appendChild(previewPicture);
+        return previewPicture;
     }
     // Create cta button for (code or demo).
-    createDemoCta(ctaObj, parent) {
+    createDemoCta(ctaObj, parent, tag = null) {
         /* 
         * @param ctaObj: object - contains the name('code' or 'demo'), status, href.
         * @param parent: object - (id selector) where the project container needs to be appended & source code Availability
         * @return cta: object - the created <a> element.
         */
         const ctaTag = 'a';
-        const cta = document.createElement(ctaTag);
+        let cta = document.createElement(ctaTag);
+        if (tag !== null) {
+            cta = document.createElement(tag);
+        }
         const ctaName = ctaObj['name'];
         cta.textContent = ctaName;
+        if (ctaName == 'demo') {
+            const devicesBox = document.createElement('div');
+            devicesBox.setAttribute('class', 'cta-demo-device-box');
+            const mobileCta = document.createElement(ctaTag);
+            mobileCta.textContent = 'mobile';
+            const desktopCta = document.createElement(ctaTag);
+            desktopCta.textContent = 'desktop';
+            const devicesArr = {
+                mobile: mobileCta,
+                desktop: desktopCta
+            };
+            for (const device in devicesArr) {
+                devicesArr[device].setAttribute('class', 'cta-demo-device');
+                let deviceURL = ctaObj['href'][device];
+                if (deviceURL === '' || deviceURL === undefined) {
+                    deviceURL = '#';
+                }
+                switch(device) {
+                    case 'mobile':
+                        mobileCta.setAttribute('href', deviceURL);
+                        break;
+                    case 'desktop':
+                        desktopCta.setAttribute('href', deviceURL);
+                        break;
+                }
+            }
+            devicesBox.appendChild(desktopCta);
+            devicesBox.appendChild(mobileCta);
+            cta.appendChild(devicesBox);
+        }
         parent.appendChild(cta);
         return cta;
     }
@@ -84,9 +135,27 @@ class createProject {
         * @param parent: object - selected parent where the description needs to be appended.
         * @return description: object - the created <p> element.
         */
+       const descriptionTextSplit = descriptionText.split(' ');
+       const descriptionWordLength = descriptionTextSplit.length;
+       const randomNumber = Math.ceil(Math.random() * 10);
+       const minLength = 20, maxLength = 30;
+       const ellipsis = '...';
+       if (descriptionWordLength > minLength) {
+           let randomLength = minLength + randomNumber;
+           if (randomLength > maxLength) {
+               randomLength = maxLength;
+           }
+           descriptionText = descriptionTextSplit.slice(0, randomLength).join(' ');
+       }
+       descriptionText = descriptionText + ellipsis + ' ';
        const description = document.createElement('p');
        const descriptionTextNode = document.createTextNode(descriptionText);
+       const seeAllElement = document.createElement('span');
+       const seeAllElementText = document.createTextNode('see all.');
+       seeAllElement.appendChild(seeAllElementText);
+       seeAllElement.setAttribute('class', 'expand-description');
        description.appendChild(descriptionTextNode);
+       description.appendChild(seeAllElement);
        parent.appendChild(description);
        return description;
     }
@@ -143,6 +212,11 @@ function startProjectRendering(jsonFile) {
     .then((response) => response.json())
     .then((data) => {
         const projectsArray = data['projects'];
+        if (projectsArray.length < 1) {
+            // Display project error notice
+            const projectError = document.getElementsByClassName('project-error-notice')[0];
+            projectError.style.display = 'block';
+        }
         const parentId = 'container';
 
         // Start rendering
@@ -160,24 +234,28 @@ function startProjectRendering(jsonFile) {
             // Preview Box
             const previewContainer = newProject.createProjectContainer(null, projectContainer);
             newProject.addAttribute({class: 'preview-box'}, previewContainer);
-            const previewImg = newProject.createPreview(previewContainer); // Screenshot
+            const previewImg = newProject.createPreviewImg(newProject['preview'], previewContainer); // Screenshot
             newProject.addAttribute({
                 class: 'preview-img',
-                src: newProject['preview']['src'],
-                alt: newProject['preview']['alt']
             }, previewImg);
             // Preview Cta Box
             const previewCtaContainer = newProject.createProjectContainer(null, previewContainer);
             newProject.addAttribute({class: 'preview-cta-box'}, previewCtaContainer);
             const ctaArray = [newProject['code'], newProject['demo']]; // code & demo cta
             for (const cta of ctaArray) {
-                const currentCta = newProject.createDemoCta(cta, previewContainer); // Current cta
                 const ctaName = cta['name'];
                 const ctaClass = 'cta-' + ctaName;
                 const ctaURL = cta['href'];
+                let currentCta = null;
+                if (ctaName == 'code') {
+                    currentCta = newProject.createDemoCta(cta, previewContainer);
+                    newProject.addAttribute({href: ctaURL}, currentCta);
+                }
+                else if (ctaName == 'demo') {
+                    const tag = 'button'
+                    currentCta = newProject.createDemoCta(cta, previewContainer, tag);
+                }
                 newProject.addAttribute({class: ctaClass}, currentCta);
-                if (ctaName == 'code') newProject.addAttribute({href: ctaURL}, currentCta);
-                else if (ctaName == 'demo') newProject.addAttribute({href: ctaURL + projectBrand}, currentCta);
                 previewCtaContainer.appendChild(currentCta);
             }
             // Project Details Box
@@ -202,18 +280,106 @@ function startProjectRendering(jsonFile) {
             const technologiesHeading = newProject.createTechnologiesHeading(technologiesContainer);
             newProject.addAttribute({class: 'details-technologies-heading'}, technologiesHeading);
             const technologiesTagsContainer = newProject.createProjectContainer(null, technologiesContainer);
-            console.log(technologiesTagsContainer)
             newProject.addAttribute({class: 'technologies-tags-container'}, technologiesTagsContainer);
             const technologiesTags = newProject.createTechnologiesTag(newProject['technologies'], technologiesTagsContainer);
             
         }    
     })
+    .catch((error) => {
+        console.warn('Warning: There\'s no project available yet.');
+        // Display project error notice
+        const projectError = document.getElementsByClassName('project-error-notice')[0];
+        projectError.style.display = 'block';
+    })
 };
 // Set current and home URL
-const currentURL = document.URL;
-const homeURL = 'http://127.0.0.1:5500/';
+const currentUrl = document.URL;
+const homeUrl = ['http://127.0.0.1:5500/',
+'http://127.0.0.1:5500/#', 
+'http://127.0.0.1:5500/index.html', 
+'http://127.0.0.1:5500/index.html#',
+'http://127.0.0.1:5500/index.html/#'];
+const projectsUrl = ['http://127.0.0.1:5500/projects.html'];
 // Featured projects
-if (currentURL == homeURL) {
+if (homeUrl.includes(currentUrl)) {
     const homeJson = './js/data.json';
     startProjectRendering(homeJson);
+} else if (projectsUrl.includes(currentUrl)) {
+    const projectsJson = './js/projects.json';
+    startProjectRendering(projectsJson);
+}
+// Add event listener for cta demo buttons
+const checkForPreviewBox = setInterval(addCtaDemoEvent, 100); // Check rendered elements every 0.1s
+function addCtaDemoEvent() {
+    const previewBoxArray = document.getElementsByClassName('preview-box');
+    if (previewBoxArray.length > 0) {
+        const demoCtaArray = document.getElementsByClassName('cta-demo');
+        for (const demoCta of demoCtaArray) {
+            demoCta.addEventListener('click', toggleDemoOption);
+        }
+        clearInterval(checkForPreviewBox);
+    }
+}
+function toggleDemoOption() {
+    /* Toggle demo options (desktop or mobile)
+    */
+    const deviceBox = this.getElementsByClassName('cta-demo-device-box')[0];
+    let displayState = deviceBox.style.display;
+    if (displayState === '') {
+        // Set display state to default
+        displayState = deviceBox.style.display = 'none';
+    }
+    // Modify style
+    if (displayState === 'none') {
+        displayState = 'flex';
+        deviceBox.style.display = displayState;
+    } else {
+        displayState = 'none';
+        deviceBox.style.display = displayState;
+    }
+}
+// Wait for proj rendering to finish and add description event
+const descriptionArray = document.getElementsByClassName('details-description');
+const setDescriptionEvent = setInterval(setDescriptionEventInit, 100);
+function setDescriptionEventInit() {
+    const currentUrl = document.URL;
+    if (homeUrl.includes(currentUrl)) {
+        const jsonFile = './js/data.json';
+        addDescriptionSeeAllEvent(descriptionArray, jsonFile);
+    } else if (projectsUrl.includes(currentUrl)) {
+        // Project page if there's a record
+        // console.log('No data found.')
+        clearInterval(setDescriptionEvent);
+    }
+}
+function addDescriptionSeeAllEvent(descriptionArray, jsonFile) {
+    // Add see all event
+    if (descriptionArray.length > 0) {
+        // Check if description element is rendered
+        for (const description of descriptionArray) {
+            const seeAll = description.getElementsByClassName('expand-description')[0];
+            seeAll.addEventListener('click', function() {
+                // Fetch data
+                const seeAllParent = seeAll.parentElement;
+                let seeAllParentId = undefined;
+                for (let i = 0; i < descriptionArray.length; i++) {
+                    if (descriptionArray[i] === seeAllParent) {
+                        // Get description key
+                        seeAllParentId = i;
+                    }
+                }
+                fetch(jsonFile)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    // Display full description
+                    const targetDataObj = data['projects'][seeAllParentId];
+                    const allDescription = targetDataObj['description'];
+                    seeAllParent.textContent = allDescription;
+                })
+            });
+        }
+        clearInterval(setDescriptionEvent);
+    }
 }
