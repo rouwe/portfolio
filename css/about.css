@@ -1,0 +1,20 @@
+.short-intro {
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: -0.2px;
+    padding: 1rem;
+    color: var(--secondary-color);
+    line-height: 1.45rem;
+}
+@media all and (min-width: 768px) {
+    .short-intro {
+        text-align: center;
+        padding: 1rem 1rem 1rem 0px;
+    }
+}
+@media all and (min-width: 1024px) {
+    .short-intro {
+        width: 75%;
+        text-align: left;
+    }
+}

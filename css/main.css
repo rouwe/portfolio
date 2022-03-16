@@ -5,6 +5,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+main#container {
+    min-height: 100vh;
+}
 .main-heading {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;

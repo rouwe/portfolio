@@ -9,6 +9,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    outline-offset: 0.2rem;
 }
 body {
     position: absolute;

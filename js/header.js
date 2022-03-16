@@ -11,7 +11,7 @@ function setOuterHeaderWidth() {
         outerHeader.style.width = '100%';
     }
 };
-setInterval(setOuterHeaderWidth, 100);
+setInterval(setOuterHeaderWidth, 50);
 const closeMenuButton = document.getElementsByClassName('header-close-menu')[0];
 const openMenuButton = document.getElementsByClassName('header-open-menu')[0];
 const outerHeader = document.getElementsByClassName('header-container')[0];

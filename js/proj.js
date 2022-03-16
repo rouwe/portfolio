@@ -190,10 +190,17 @@ class createProject {
 }
 function startProjectRendering(jsonFile) {
     // Fetch
+    console.log(jsonFile)
     fetch(jsonFile)
     .then((response) => response.json())
     .then((data) => {
         const projectsArray = data['projects'];
+        console.log(projectsArray.length)
+        if (projectsArray.length < 1) {
+            // Display project error notice
+            const projectError = document.getElementsByClassName('project-error-notice')[0];
+            projectError.style.display = 'block';
+        }
         const parentId = 'container';
 
         // Start rendering
@@ -229,7 +236,7 @@ function startProjectRendering(jsonFile) {
                     newProject.addAttribute({href: ctaURL}, currentCta);
                 }
                 else if (ctaName == 'demo') {
-                    const tag = 'div'
+                    const tag = 'button'
                     currentCta = newProject.createDemoCta(cta, previewContainer, tag);
                 }
                 newProject.addAttribute({class: ctaClass}, currentCta);
@@ -262,14 +269,24 @@ function startProjectRendering(jsonFile) {
             
         }    
     })
+    .catch((error) => {
+        console.warn('Warning: There\'s no project available yet.');
+        // Display project error notice
+        const projectError = document.getElementsByClassName('project-error-notice')[0];
+        projectError.style.display = 'block';
+    })
 };
 // Set current and home URL
 const currentURL = document.URL;
 const homeURL = ['http://127.0.0.1:5500/', 'http://127.0.0.1:5500/index.html'];
+const projectsURL = ['http://127.0.0.1:5500/projects.html'];
 // Featured projects
 if (homeURL.includes(currentURL)) {
     const homeJson = './js/data.json';
     startProjectRendering(homeJson);
+} else if (projectsURL.includes(currentURL)) {
+    const projectsJson = './js/projects.json';
+    startProjectRendering(projectsJson);
 }
 // Add event listener for cta demo buttons
 const checkForPreviewBox = setInterval(addCtaDemoEvent, 100); // Check rendered elements every 0.1s

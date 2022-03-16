@@ -39,6 +39,9 @@
     display: flex;
     margin: 0 2rem;
 }
+.projects-icon {
+    display: flex;
+}
 .menu-box .logo {
     position: relative;
     height: 1.875rem;
@@ -100,6 +103,7 @@
     display: none;
 }
 .nav-item-active {
+    border-radius: 4px;
     background-color: #393637;
 }
 .nav-link {
@@ -125,6 +129,10 @@
     margin-top: 0.2rem;
     color: var(--nav-icon);
     opacity: 0.8;
+}
+.nav-icon-active path, .nav-destination-active {
+    fill: #FFFFFF;
+    opacity: 1;
 }
 @media all and (min-width: 375px) {
     .menu-box .logo {
@@ -163,11 +171,13 @@
         flex-direction: column;
     }
     .logo-link {
+        position: relative;
         margin: auto;
+        margin-top: 2.12rem;
     }
     .menu-box .logo {
         transform: scale(1.1);
-        margin-top: 2.12rem;
+        margin-top: 0px;
     }
     .menu-box svg {
         transform: scale(0.9);
@@ -177,9 +187,9 @@
     }
     .logo {
         align-self: center;
-        margin: 2rem 0px 0px;
+        margin: 0px;
     }
-    .header-open-menu, .header-projects {
+    .header-open-menu, .header-projects, .projects-icon {
         display: none;
     }
     /* Collapsed Navigation Menu */
@@ -267,7 +277,7 @@
         color: #FFFFFF;
         background-color: var(--secondary-color);
     }
-    .desktop-nav-active path {
+    .desktop-nav-icon-active path {
         fill: #FFFFFF;
     }
     .desktop-nav-destination-active {
