@@ -27,7 +27,7 @@ main#container {
     text-align: center;
     padding: 0px 1rem;
 }
-@media all and (min-width: 768px) {
+@media all and (min-width: 950px) {
     body {
         display: grid;
         grid-template-columns: min-content 1fr;
@@ -56,6 +56,12 @@ main#container {
     }
 }
 @media all and (min-width: 1024px) {
+    body {
+        grid-template: "header main main main" max-content
+                        "header main main main" max-content
+                        "header footer footer footer" max-content/min-content 1fr 1fr 1fr;
+    }
+    
     main#container {
         margin: 0px 2.64rem;
     }

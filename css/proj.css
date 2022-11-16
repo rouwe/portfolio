@@ -130,7 +130,7 @@
     background-color: var(--secondary-color);
     box-shadow: 3px 0px 3px #0000000d, 0px 3px 3px #00000033;
 }
-@media all and (min-width: 768px) {
+@media all and (min-width: 950px) {
     .project-container {
         flex-direction: row;
         margin: 0px 0px 3.125rem;

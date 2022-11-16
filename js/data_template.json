@@ -4,28 +4,28 @@
             "preview": {
                 "sources": {
                     "extra_extra_large": {
-                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_xxl.png",
+                        "srcset": "./assets/demo/projects/(projectFolder)/Project Screenshot - xxl.png",
                         "media":"(min-width: 3820px)"
                     },
                     "extra_large": {
-                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_xl.png",
+                        "srcset": "./assets/demo/projects/(projectFolder)/Project Screenshot - xl.png",
                         "media": "(min-width: 2346px)"
                     },
                     "large": {
-                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_lg.png",
+                        "srcset": "./assets/demo/projects/(projectFolder)/Project Screenshot - lg.png",
                         "media":"(min-width: 1920px)"
                     },
                     "medium_large": {
-                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_mdlg.png",
+                        "srcset": "./assets/demo/projects/(projectFolder)/Project Screenshot - mdlg.png",
                         "media": "(min-width: 1600px)"
                     },
                     "medium": {
-                        "srcset": "./assets/demo/projects/gread/gread_demo_screenshot_md.png",
+                        "srcset": "./assets/demo/projects/(projectFolder)/Project Screenshot - md.png",
                         "media": "(min-width: 1366px)"
                     },
                     "small": {
-                        "src": "./assets/demo/projects/gread/gread_demo_screenshot_sm.png",
-                        "alt": "Gread application screenshot"
+                        "src": "./assets/demo/projects/(projectFolder)/Project Screenshot - sm.png",
+                        "alt": "(projectName) application screenshot"
                     }
                 }
             },
@@ -36,13 +36,13 @@
             "demo": {
                 "name": "demo",
                 "href": {
-                    "mobile": "https://drive.google.com/file/d/1-2ejOq8-xHuKxbNX8CnEk4ux-0IE1w0P/view?usp=sharing",
-                    "desktop": "https://drive.google.com/file/d/1z-3zZEL7KCV6lT_r5QpgIgVF9SnyBRtp/view?usp=sharing"
+                    "mobile": "",
+                    "desktop": ""
                 }
             },
             "brand": "gread",
             "catchPhrase": "your library of entertainment",
-            "description": "I built this web application because there are times when I have the urge to re-read or re-watch a specific anime, manga, or movie. I would have a hard time remembering the title and will either try hard thinking about the title or surf the web by using a character's name and looking for a relation to the one I'm looking for based on image recognition. This application will allow users to keep track of important information about their favorite entertainment like (title and description).",
+            "description": "I built this",
             "technologies": ["html", "css", "javascript", "php", "mysql"]
         }
     ]

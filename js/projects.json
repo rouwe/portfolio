@@ -1,0 +1,364 @@
+{
+    "projects": [
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/ecommerce/ecommerce_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/ecommerce/ecommerce_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/ecommerce/ecommerce_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/ecommerce/ecommerce_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/ecommerce/ecommerce_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/ecommerce/ecommerce_demo_screenshot_sm.png",
+                        "alt": "E-commerce product page screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem-ecommerce-product-page"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem-ecommerce-product-page/",
+                    "desktop": "https://rouwe.github.io/fem-ecommerce-product-page/"
+                }
+            },
+            "brand": "e-commerce product page",
+            "catchPhrase": "fall limited edition sneakers",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/section/section_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/section/section_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/section/section_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/section/section_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/section/section_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/section/section_demo_screenshot_sm.png",
+                        "alt": "Snap application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem-intro-section-with-dropdown-navigation"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem-intro-section-with-dropdown-navigation/",
+                    "desktop": "https://rouwe.github.io/fem-intro-section-with-dropdown-navigation/"
+                }
+            },
+            "brand": "snap landing page",
+            "catchPhrase": "make remote work",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/joblistings/jobListings_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/joblistings/jobListings_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/joblistings/jobListings_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/joblistings/jobListings_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/joblistings/jobListings_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/joblistings/jobListings_demo_screenshot_sm.png",
+                        "alt": "Job Listing application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem-intro-section-with-dropdown-navigation"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem_job_listings_with_filtering/",
+                    "desktop": "https://rouwe.github.io/fem_job_listings_with_filtering/"
+                }
+            },
+            "brand": "job listings",
+            "catchPhrase": "Find job that suits you",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/room/room_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/room/room_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/room/room_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/room/room_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/room/room_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/room/room_demo_screenshot_sm.png",
+                        "alt": "Room application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem_room_homepage"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem_room_homepage/",
+                    "desktop": "https://rouwe.github.io/fem_room_homepage/"
+                }
+            },
+            "brand": "room landing page",
+            "catchPhrase": "discover innovative ways to decorate",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/manage/manage_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/manage/manage_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/manage/manage_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/manage/manage_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/manage/manage_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/manage/manage_demo_screenshot_sm.png",
+                        "alt": "Manage application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem_manage_landing_page"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem_manage_landing_page/",
+                    "desktop": "https://rouwe.github.io/fem_manage_landing_page/"
+                }
+            },
+            "brand": "manage landing page",
+            "catchPhrase": "bring everyone together to build better products.",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/easybank/easybank_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/easybank/easybank_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/easybank/easybank_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/easybank/easybank_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/easybank/easybank_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/easybank/easybank_demo_screenshot_sm.png",
+                        "alt": "Easybank application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem_easybank_landing_page"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem_easybank_landing_page/",
+                    "desktop": "https://rouwe.github.io/fem_easybank_landing_page/"
+                }
+            },
+            "brand": "easybank landing page",
+            "catchPhrase": "next generation digital banking",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/bookmark/bookmark_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/bookmark/bookmark_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/bookmark/bookmark_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/bookmark/bookmark_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/bookmark/bookmark_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/bookmark/bookmark_demo_screenshot_sm.png",
+                        "alt": "Bookmark application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/fem_bookmark_landing_page"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/fem_bookmark_landing_page/",
+                    "desktop": "https://rouwe.github.io/fem_bookmark_landing_page/"
+                }
+            },
+            "brand": "bookmark landing page",
+            "catchPhrase": "A Simple Bookmark Manager",
+            "description": "Frontend Mentor platform challenge.",
+            "technologies": ["html", "css", "javascript"]
+        },
+        {
+            "preview": {
+                "sources": {
+                    "extra_extra_large": {
+                        "srcset": "./assets/demo/projects/shrec/shrec_demo_screenshot_xxl.png",
+                        "media":"(min-width: 3820px)"
+                    },
+                    "extra_large": {
+                        "srcset": "./assets/demo/projects/shrec/shrec_demo_screenshot_xl.png",
+                        "media": "(min-width: 2346px)"
+                    },
+                    "large": {
+                        "srcset": "./assets/demo/projects/shrec/shrec_demo_screenshot_lg.png",
+                        "media":"(min-width: 1920px)"
+                    },
+                    "medium_large": {
+                        "srcset": "./assets/demo/projects/shrec/shrec_demo_screenshot_mdlg.png",
+                        "media": "(min-width: 1600px)"
+                    },
+                    "medium": {
+                        "srcset": "./assets/demo/projects/shrec/shrec_demo_screenshot_md.png",
+                        "media": "(min-width: 1366px)"
+                    },
+                    "small": {
+                        "src": "./assets/demo/projects/shrec/shrec_demo_screenshot_sm.png",
+                        "alt": "Shrec application screenshot"
+                    }
+                }
+            },
+            "code": {
+                "name": "code",
+                "href": "https://github.com/rouwe/shrec_shonen_anime_recommendation"
+            },
+            "demo": {
+                "name": "demo",
+                "href": {
+                    "mobile": "https://rouwe.github.io/shrec_shonen_anime_recommendation/",
+                    "desktop": "https://rouwe.github.io/shrec_shonen_anime_recommendation/"
+                }
+            },
+            "brand": "shounen anime recommendation",
+            "catchPhrase": "Capstone Project",
+            "description": "Shrec is a capstone project of the Coursera MOOC 'Web design for Everybody Specialization' from University of Michigan",
+            "technologies": ["html", "css", "javascript"]
+        }
+    ]
+}
