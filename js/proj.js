@@ -121,7 +121,10 @@ class createProject {
         */
         const brandName = brandObj['brand'], catchPhrase = brandObj['catchPhrase'];
         const formatBrandName = `${brandName[0].toUpperCase()}${brandName.slice(1,)}`;
-        const formatCatchPhrase = catchPhrase.split(' ')[0][0].toUpperCase() + catchPhrase.slice(1,);
+        let formatCatchPhrase = "";
+        if (catchPhrase.length > 0) {
+            formatCatchPhrase = catchPhrase.split(' ')[0][0].toUpperCase() + catchPhrase.slice(1,);
+        }
         const projectTitleTextNode = document.createTextNode(`${formatBrandName} - ${formatCatchPhrase}`);
         const projectTitleElement = document.createElement("h2");
         projectTitleElement.appendChild(projectTitleTextNode);
@@ -135,29 +138,11 @@ class createProject {
         * @param parent: object - selected parent where the description needs to be appended.
         * @return description: object - the created <p> element.
         */
-       const descriptionTextSplit = descriptionText.split(' ');
-       const descriptionWordLength = descriptionTextSplit.length;
-       const randomNumber = Math.ceil(Math.random() * 10);
-       const minLength = 20, maxLength = 30;
-       const ellipsis = '...';
-       if (descriptionWordLength > minLength) {
-           let randomLength = minLength + randomNumber;
-           if (randomLength > maxLength) {
-               randomLength = maxLength;
-           }
-           descriptionText = descriptionTextSplit.slice(0, randomLength).join(' ');
-       }
-       descriptionText = descriptionText + ellipsis + ' ';
-       const description = document.createElement('p');
-       const descriptionTextNode = document.createTextNode(descriptionText);
-       const seeAllElement = document.createElement('span');
-       const seeAllElementText = document.createTextNode('see all.');
-       seeAllElement.appendChild(seeAllElementText);
-       seeAllElement.setAttribute('class', 'expand-description');
-       description.appendChild(descriptionTextNode);
-       description.appendChild(seeAllElement);
-       parent.appendChild(description);
-       return description;
+        const description = document.createElement('p');
+        const descriptionTextNode = document.createTextNode(descriptionText);
+        description.appendChild(descriptionTextNode);
+        parent.appendChild(description);
+        return description;
     }
     // Create divider
     createDetailsDivider(parent) {
@@ -165,9 +150,9 @@ class createProject {
         * @param parent: object - selected parent where the divider element needs to be appended.
         * @return divider: object - the created <hr> element.
         */
-       const divider = document.createElement('hr');
-       parent.appendChild(divider);
-       return divider;
+        const divider = document.createElement('hr');
+        parent.appendChild(divider);
+        return divider;
     }
     // Create technologies tag heading
     createTechnologiesHeading(parent) {
@@ -312,7 +297,7 @@ if (homeUrl.includes(currentUrl)) {
     startProjectRendering(projectsJson);
 }
 // Add event listener for cta demo buttons
-const checkForPreviewBox = setInterval(addCtaDemoEvent, 100); // Check rendered elements every 0.1s
+const checkForPreviewBox = setInterval(addCtaDemoEvent, 1000); // Check rendered elements every 1s
 function addCtaDemoEvent() {
     const previewBoxArray = document.getElementsByClassName('preview-box');
     if (previewBoxArray.length > 0) {
@@ -339,50 +324,5 @@ function toggleDemoOption() {
     } else {
         displayState = 'none';
         deviceBox.style.display = displayState;
-    }
-}
-// Wait for proj rendering to finish and add description event
-const descriptionArray = document.getElementsByClassName('details-description');
-const setDescriptionEvent = setInterval(setDescriptionEventInit, 100);
-function setDescriptionEventInit() {
-    const currentUrl = document.URL;
-    if (homeUrl.includes(currentUrl)) {
-        const jsonFile = './js/data.json';
-        addDescriptionSeeAllEvent(descriptionArray, jsonFile);
-    } else if (projectsUrl.includes(currentUrl)) {
-        // Project page if there's a record
-        // console.log('No data found.')
-        clearInterval(setDescriptionEvent);
-    }
-}
-function addDescriptionSeeAllEvent(descriptionArray, jsonFile) {
-    // Add see all event
-    if (descriptionArray.length > 0) {
-        // Check if description element is rendered
-        for (const description of descriptionArray) {
-            const seeAll = description.getElementsByClassName('expand-description')[0];
-            seeAll.addEventListener('click', function() {
-                // Fetch data
-                const seeAllParent = seeAll.parentElement;
-                let seeAllParentId = undefined;
-                for (let i = 0; i < descriptionArray.length; i++) {
-                    if (descriptionArray[i] === seeAllParent) {
-                        // Get description key
-                        seeAllParentId = i;
-                    }
-                }
-                fetch(jsonFile)
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    // Display full description
-                    const targetDataObj = data['projects'][seeAllParentId];
-                    const allDescription = targetDataObj['description'];
-                    seeAllParent.textContent = allDescription;
-                })
-            });
-        }
-        clearInterval(setDescriptionEvent);
     }
 }

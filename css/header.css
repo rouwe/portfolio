@@ -149,7 +149,7 @@
         justify-content: space-evenly;
     }
 }
-@media all and (min-width: 768px) {
+@media all and (min-width: 950px) {
     /* Header */
     .header-container {
         grid-area: header;
@@ -157,7 +157,6 @@
         box-shadow: 2px 0px 4px #00000026;
     }
     .inner-header-container {
-        position: fixed;
         height: 100%;
         max-height: unset;
         justify-content: flex-start;

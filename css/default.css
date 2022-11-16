@@ -41,14 +41,14 @@ body {
         font-size: 17.5px;
     }
 }
-@media all and (min-width: 768px) {
-    :root {
-        font-size: 16.5px;
-    }
-}
 @media all and (min-width: 834px) {
     :root {
         font-size: 16.8px;
+    }
+}
+@media all and (min-width: 950px) {
+    :root {
+        font-size: 16.5px;
     }
 }
 @media all and (min-width: 1024px) {

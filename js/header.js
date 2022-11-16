@@ -1,38 +1,23 @@
-function setOuterHeaderWidth() {
-    /* Sets the width of outer header based on inner header
-    */
-    const outerHeader = document.getElementsByClassName('header-container')[0];
-    const innerHeader = document.getElementsByClassName('inner-header-container')[0];
-    const innerHeaderWidth = innerHeader.offsetWidth;
-    const headerScreenWidth = window.innerWidth;
-    if (headerScreenWidth > 767) {
-        outerHeader.style.width = `${innerHeaderWidth}px`;
-    } else {
-        outerHeader.style.width = '100%';
-    }
-};
-setInterval(setOuterHeaderWidth, 50);
 const closeMenuButton = document.getElementsByClassName('header-close-menu')[0];
 const openMenuButton = document.getElementsByClassName('header-open-menu')[0];
 const outerHeader = document.getElementsByClassName('header-container')[0];
 
-setInterval(modifyMenuEvent, 1000);
-function modifyMenuEvent() {
-    const screenWidth = window.outerWidth;
+(function modifyMenuEvent() {
+    const screenWidth = screen.width;
     if (screenWidth > 767) {
         // Menu Event for tablet and up
         openMenuButton.removeEventListener('click', mobileOpenMenu);
         closeMenuButton.removeEventListener('click', mobileCloseMenu);
         openMenuButton.addEventListener('click', desktopOpenMenu);
         closeMenuButton.addEventListener('click', desktopCloseMenu);
-    } else if (screenWidth < 768) {
+    } else {
         // Menu Event for mobile
         openMenuButton.removeEventListener('click', desktopOpenMenu);
         closeMenuButton.removeEventListener('click', desktopCloseMenu);
         openMenuButton.addEventListener('click', mobileOpenMenu);
         closeMenuButton.addEventListener('click', mobileCloseMenu); 
     }
-}
+})();
 const innerHeader = document.getElementsByClassName('inner-header-container')[0];
 const navMenuBox = document.getElementsByClassName('nav-menu-box')[0];
 const menuBox = document.getElementsByClassName('menu-box')[0];
@@ -43,6 +28,7 @@ const navItemBox = document.getElementsByClassName('nav-item-box');
 const navQuote = document.getElementsByClassName('nav-quote')[0];
 const navDestinations = document.getElementsByClassName('nav-destination');
 function desktopOpenMenu() {
+    console.log("desktopOpenMenu")
     // Opens the navigation menu for tablet devices and up
     closeMenuButton.style.display = 'flex';
     openMenuButton.style.display = 'none';
@@ -62,6 +48,7 @@ function desktopOpenMenu() {
     
 }
 function desktopCloseMenu() {
+    console.log("desktopCloseMenu")
     // Closes the navigation menu for tablet devices and up
     closeMenuButton.style.display = 'none';
     openMenuButton.style.display = 'flex';
@@ -81,6 +68,7 @@ function desktopCloseMenu() {
 }
 function mobileOpenMenu() {
     // Open mobile menu
+    console.log("mobileOpenMenu")
     openMenuButton.style.display = 'none';
     closeMenuButton.style.display = 'flex';
     innerHeader.style.maxHeight = 'unset';
@@ -95,6 +83,7 @@ function mobileOpenMenu() {
 }
 function mobileCloseMenu() {
     // Close mobile menu
+    console.log("mobileCloseMenu")
     const headerMaxHeight = menuBox.offsetHeight;
     openMenuButton.style.display = 'flex';
     closeMenuButton.style.display = 'none';
@@ -105,36 +94,4 @@ function mobileCloseMenu() {
     navDataBox.style.display = 'none';
     navQuote.style.display = 'none';
     navMenuBox.style.display = 'flex';
-}
-// Reset menu states
-if (window.outerWidth < 768) {
-    mobileOpenMenu();
-    mobileCloseMenu();
-} else {
-    desktopCloseMenu();
-    desktopOpenMenu();
-}
-// Sync menu state based on screen viewport when resizing
-window.onresize = () => {
-    const closeDisplay = closeMenuButton.style.display;
-    const screenWidth = window.innerWidth;
-    if (screenWidth < 768) {
-        if (closeDisplay == 'flex') {
-            // Menu is Open
-            mobileCloseMenu();
-            mobileOpenMenu();
-        } else {
-            mobileOpenMenu();
-            mobileCloseMenu();
-        }
-    } else {
-        if (closeDisplay == 'none') {
-            // Menu is closed
-            desktopOpenMenu();
-            desktopCloseMenu();
-        } else {
-            desktopCloseMenu();
-            desktopOpenMenu();
-        }
-    }
 }
